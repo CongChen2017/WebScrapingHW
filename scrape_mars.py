@@ -65,7 +65,7 @@ def scrape():
 	hemisperes_list = ['Cerberus', 'Schiaparelli', 'Syrtis Major', 'Valles Marineris']
 	for hemispere in hemisperes_list:
 		find_hemisperes(hemispere)
-		time.sleep(5)
+		time.sleep(2)
 
 	scrape_dic = {
 		"news_title" : news_title,

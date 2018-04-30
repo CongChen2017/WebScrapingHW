@@ -12,15 +12,16 @@ def index():
     listings = mongo.db.listings.find_one()
     return render_template("index.html", dict=listings)
 
-@app.route("/clear")
-def clear():
-    result = mongo.db.listings.delete_many({})
-    return redirect("http://127.0.0.1:5000/", code=302)
+# @app.route("/clear")
+# def clear():
+#     result = mongo.db.listings.delete_many({})
+#     return redirect("http://127.0.0.1:5000/", code=302)
 
 @app.route("/scrape")
 def scrape():
     listings = mongo.db.listings
     listings_data = scrape_mars.scrape()
+    listings.delete_many({})
     listings.insert_one(listings_data)
     return redirect("http://127.0.0.1:5000/", code=302)
 
